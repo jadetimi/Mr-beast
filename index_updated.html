@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mr Beast Challenge Registration</title>
+  <style>
+    body{font-family:Arial,Helvetica,sans-serif;background:linear-gradient(135deg,#ff416c,#ff4b2b);color:#fff;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center}
+    .container{background:rgba(0,0,0,0.85);padding:28px;border-radius:14px;max-width:560px;width:94%;box-shadow:0 10px 30px rgba(0,0,0,0.5);text-align:center}
+    h1{margin:0 0 8px;font-size:26px}
+    p.lead{margin:0 0 18px;color:#ffdede}
+    form{display:flex;flex-direction:column;gap:12px;margin-top:6px}
+    input,select,button{padding:12px;border-radius:10px;border:none;font-size:15px}
+    input,select{background:#fff;color:#111}
+    button{background:#ffdd57;color:#111;font-weight:700;cursor:pointer;transition:all .18s ease}
+    button:hover{transform:translateY(-2px)}
+    .confirmation{display:none;color:#b7ffb7;margin-top:18px;font-size:17px;line-height:1.4}
+    .policy{margin-top:18px;color:#f1dede;font-size:14px;line-height:1.5;text-align:left}
+    .mailto{color:#fff;font-weight:700}
+    @media (max-width:480px){.container{padding:18px}h1{font-size:20px}}
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <h1>Mr Beast Challenge Registration 🎉</h1>
+    <p class="lead">Fill the form below to secure your spot. After submitting, send your gift card code to our email for verification.</p>
+
+    <form id="regForm" autocomplete="on">
+      <input type="text" name="fullname" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Email Address" required />
+      <input type="tel" name="phone" placeholder="Phone Number" required />
+      <input type="number" name="age" placeholder="Age" min="8" required />
+      <input type="text" name="country" placeholder="Country of Residence" required />
+      <button type="submit">Submit & Register</button>
+    </form>
+
+    <div class="confirmation" id="confirmationMessage" aria-live="polite">
+      ✅ Registration submitted!<br><br>
+      📩 Please send your Gift Card code (Amazon, Google Play, or Steam) to our official email: 
+      <a class="mailto" href="mailto:mrbeastchallengegame@gmail.com">mrbeastchallengegame@gmail.com</a>.<br><br>
+      Once verified, you'll receive the full challenge details and your access link — keep an eye on your inbox! 🚀🔥
+    </div>
+
+    <div class="policy">
+      <strong>Why only gift cards?</strong><br>
+      To protect participants and avoid online payment scams, our official policy requires gift card payments. Payments are handled by our organizing team — <strong>not MrBeast or his company</strong>.<br><br>
+      After sending your gift card code, please allow us a short time to verify before we send access details.
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const form = document.getElementById('regForm');
+      const confirm = document.getElementById('confirmationMessage');
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        // For privacy: do not store sensitive codes here. The form only captures basic details.
+        form.style.display = 'none';
+        confirm.style.display = 'block';
+        // Optionally, you can later send these details to a server or Google Sheet using a backend or form handling service.
+      });
+    })();
+  </script>
+</body>
+</html>
